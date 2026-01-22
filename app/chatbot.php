@@ -49,6 +49,12 @@
       top: 0;
       z-index: 100;
       overflow-y: auto;
+      animation: slideInLeft 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes slideInLeft {
+      from { transform: translateX(-100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
     }
 
     .main-content {
@@ -61,6 +67,12 @@
       min-height: 100vh;
       margin-left: 260px;
       overflow-y: auto;
+      animation: slideInRight 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes slideInRight {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
     }
 
     .nav-link {
@@ -72,6 +84,7 @@
       text-decoration: none;
       font-weight: 600;
       cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
       position: relative;
       overflow: hidden;
     }
@@ -108,6 +121,12 @@
       color: #a21caf;
       margin-bottom: 2rem;
       text-shadow: 0 2px 8px #fbc2eb88;
+      animation: slideDown 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     .chatbot-container {
@@ -122,13 +141,17 @@
       flex-direction: column;
       height: 85vh;
       box-shadow: 0 8px 40px #fbc2eb44;
+      animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
       transition: all 0.3s ease;
     }
 
+    @keyframes scaleIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
     .chatbot-container:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 32px #fbc2eb66;
-      border-color: #f8b6e0;
+      box-shadow: 0 12px 50px #fbc2eb55;
     }
 
     .chat-header {
@@ -407,6 +430,14 @@
                 </span>
                 <span>Settings</span>
             </a>
+            <a href="google_login.php" class="nav-link">
+                <span style="margin-right: 0.7rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#a21caf">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 1v22M5 12h14M9 5l6 6-6 6" />
+                    </svg>
+                </span>
+                <span>Logout</span>
+            </a>
         </nav>
     </div>
     <div style="padding: 1rem; text-align: center; background: #a21caf; color: #fff; font-size: 0.98rem; border-radius: 0 0 1rem 1rem; margin-top: auto;">
@@ -587,13 +618,6 @@ function speakText(text) {
   if ('speechSynthesis' in window) {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.rate = 1;
-    utterance.pitch = 1.5;
-    // Set female voice
-    const voices = speechSynthesis.getVoices();
-    const femaleVoice = voices.find(voice => voice.name.includes('female') || voice.name.includes('Female') || voice.name.includes('woman') || voice.name.includes('Woman')) || voices.find(voice => voice.name.includes('Google UK English Female')) || voices[1];
-    if (femaleVoice) {
-      utterance.voice = femaleVoice;
-    }
     speechSynthesis.speak(utterance);
   }
 }
