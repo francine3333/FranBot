@@ -180,14 +180,6 @@
                 </span>
                 <span>Settings</span>
             </a>
-            <a href="google_login.php" class="nav-link">
-                <span style="margin-right: 0.7rem;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#a21caf">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 1v22M5 12h14M9 5l6 6-6 6" />
-                    </svg>
-                </span>
-                <span>Logout</span>
-            </a>
         </nav>
     </div>
     <div style="padding: 1rem; text-align: center; background: #a21caf; color: #fff; font-size: 0.98rem; border-radius: 0 0 1rem 1rem; margin-top: auto;">
